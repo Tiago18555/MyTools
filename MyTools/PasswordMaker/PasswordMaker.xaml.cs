@@ -1,37 +1,65 @@
 using Microsoft.Maui.Controls;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MyTools
 {
     public partial class PasswordMakerPage : ContentPage
     {
-        //#2C2C54
-        //#474787
-        //#AAABB8
-        //#ECECEC
         public PasswordMakerPage()
         {
             InitializeComponent();
+            InputContainer.PlayButtonClicked += OnPlayButtonClicked;
         }
 
-        public void OnPlayButtonClicked()
+        public void OnPlayButtonClicked(object sender, EventArgs e)
         {
-            // Handle Play button clicked in InputContainer
             var inputText = ((InputContainer)this.FindByName("InputContainer")).GetInputText();
             var hashType = ((InputContainer)this.FindByName("InputContainer")).GetSelectedHashType();
 
-            // Process the input text with the selected hash type
             var result = Encrypt(inputText, hashType);
 
-            // Set the result in the OutputContainer
             ((OutputContainer)this.FindByName("OutputContainer")).SetOutput(result);
         }
 
         private string Encrypt(string input, string hashType)
         {
-            // Placeholder for real encryption logic based on hash type
-            char[] charArray = input.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
+            byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+
+            switch (hashType.ToUpper())
+            {
+                case "BASE64":
+                    return Convert.ToBase64String(inputBytes);
+                case "HEX":
+                    return BitConverter.ToString(inputBytes).Replace("-", "").ToLower();
+                case "SHA1":
+                    using (SHA1 sha1 = SHA1.Create())
+                    {
+                        byte[] hashBytes = sha1.ComputeHash(inputBytes);
+                        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                    }
+                case "SHA256":
+                    using (SHA256 sha256 = SHA256.Create())
+                    {
+                        byte[] hashBytes = sha256.ComputeHash(inputBytes);
+                        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                    }
+                case "SHA384":
+                    using (SHA384 sha384 = SHA384.Create())
+                    {
+                        byte[] hashBytes = sha384.ComputeHash(inputBytes);
+                        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                    }
+                case "SHA512":
+                    using (SHA512 sha512 = SHA512.Create())
+                    {
+                        byte[] hashBytes = sha512.ComputeHash(inputBytes);
+                        return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+                    }
+                default:
+                    throw new ArgumentException("Invalid hash type");
+            }
         }
     }
 }

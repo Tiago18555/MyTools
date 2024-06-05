@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyTools.InputContainer"
              BackgroundColor="#474787">
-    <VerticalStackLayout Padding="10">
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Label Text="PWD CRYPTO FACTORY" 
+               FontSize="30"
+               HeightRequest="35"
+               BackgroundColor="#2C2C54"
+               TextColor="White"
+               HorizontalTextAlignment="Center"
+               FontAttributes="Bold" />
+        
         <FlexLayout Direction="Row" JustifyContent="SpaceBetween"
             >
             <Border BackgroundColor="#ECECEC">
@@ -12,7 +20,7 @@
                     Placeholder="ENTRADA"
                     TextColor="#2c2c54"
                     FontSize="20"
-                    WidthRequest="325"
+                    WidthRequest="355"
                     HorizontalTextAlignment="Center"
                 />                
             </Border>
@@ -22,17 +30,15 @@
                         HeightRequest="40"
                         WidthRequest="40"
                         Clicked="OnPlayButtonClicked" 
-                        HorizontalOptions="End"
             />
         </FlexLayout>
 
-        <HorizontalStackLayout Spacing="10" Padding="10">
+        <HorizontalStackLayout>
             
             <Picker x:Name="hashTypePicker"
                     Title="Select Hash Type"
                     HorizontalTextAlignment="Center"
-                    WidthRequest="340"
-                    BackgroundColor="#8A2BE2"
+                    WidthRequest="380"
                     TextColor="White"
                     FontSize="20"
             >

@@ -4,6 +4,7 @@ namespace MyTools
 {
     public partial class InputContainer : ContentView
     {
+        public event EventHandler PlayButtonClicked;
         public InputContainer()
         {
             InitializeComponent();
@@ -22,8 +23,7 @@ namespace MyTools
 
         private void OnPlayButtonClicked(object sender, EventArgs e)
         {
-            // Call the public method on the parent page
-            (Parent as PasswordMakerPage)?.OnPlayButtonClicked();
+            PlayButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void OnToggleListClicked(object sender, EventArgs e)
