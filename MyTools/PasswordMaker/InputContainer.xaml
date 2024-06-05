@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTools.InputContainer"
+             BackgroundColor="#474787">
+    <VerticalStackLayout Padding="10">
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween"
+            >
+            <Border BackgroundColor="#ECECEC">
+                <Entry 
+                    x:Name="inputEntry"
+                    Placeholder="ENTRADA"
+                    TextColor="#2c2c54"
+                    FontSize="20"
+                    WidthRequest="325"
+                    HorizontalTextAlignment="Center"
+                />                
+            </Border>
+
+            <ImageButton
+                        Source="Resources/AppIcon/play_button.png"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        Clicked="OnPlayButtonClicked" 
+                        HorizontalOptions="End"
+            />
+        </FlexLayout>
+
+        <HorizontalStackLayout Spacing="10" Padding="10">
+            
+            <Picker x:Name="hashTypePicker"
+                    Title="Select Hash Type"
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="340"
+                    BackgroundColor="#8A2BE2"
+                    TextColor="White"
+                    FontSize="20"
+            >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>BASE64</x:String>
+                        <x:String>HEX</x:String>
+                        <x:String>SHA1</x:String>
+                        <x:String>SHA256</x:String>
+                        <x:String>SHA384</x:String>
+                        <x:String>SHA512</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </HorizontalStackLayout>        
+    </VerticalStackLayout>
+    
+
+</ContentView>

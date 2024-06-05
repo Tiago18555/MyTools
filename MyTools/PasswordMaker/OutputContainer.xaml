@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTools.OutputContainer"
+             BackgroundColor="#474787">
+
+    <VerticalStackLayout x:Name="outputContainer" 
+                         VerticalOptions="FillAndExpand" 
+                         Padding="10" 
+                         Spacing="20">
+
+        <Label Text="Output:" 
+               FontSize="20"
+               TextColor="White" 
+               HorizontalOptions="Start" />
+
+        <ScrollView>
+            <Label x:Name="outputLabel" 
+                   FontSize="25" 
+                   TextColor="#2c2c54" 
+                   Text="HASH EXAMPLE"
+                   HeightRequest="400"
+                   BackgroundColor="#A9A9F5"
+                   Padding="10" />
+        </ScrollView>
+
+        <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+            <Label Text="12" 
+                   FontSize="20" 
+                   TextColor="#2c2c54" 
+                   BackgroundColor="#a9a9f5" 
+                   Padding="10" 
+                   WidthRequest="50"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"/>
+
+            <RadioButton Content="First" 
+                         WidthRequest="50" 
+                         HorizontalOptions="CenterAndExpand" 
+                         VerticalOptions="CenterAndExpand"/>
+
+            <RadioButton Content="Last" 
+                         WidthRequest="50" 
+                         HorizontalOptions="CenterAndExpand" 
+                         VerticalOptions="CenterAndExpand"/>
+
+            <RadioButton Content="All" 
+                         WidthRequest="50" 
+                         HorizontalOptions="CenterAndExpand" 
+                         VerticalOptions="CenterAndExpand" 
+                         IsChecked="True"/>
+
+            <ImageButton BackgroundColor="Transparent" 
+                    BorderColor="#1a0d91" 
+                    BorderWidth="2" 
+                    WidthRequest="50" 
+                    HeightRequest="50"
+                    Source="Resources/AppIcon/copy.png"
+                    HorizontalOptions="End"
+            >
+            </ImageButton>
+        </FlexLayout>
+    </VerticalStackLayout>
+
+</ContentView>
